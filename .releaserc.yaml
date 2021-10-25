@@ -1,2 +1,2 @@
-branch: main
+branch: master
 extends: "semantic-release-npm-github-publish"
