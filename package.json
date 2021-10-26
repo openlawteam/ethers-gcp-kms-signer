@@ -39,6 +39,7 @@
   "homepage": "https://github.com/openlawteam/ethers-gcp-kms-signer#readme",
   "dependencies": {
     "@google-cloud/kms": "^2.10.0",
+    "@metamask/eth-sig-util": "^4.0.0",
     "asn1.js": "^5.4.1",
     "bn.js": "^5.2.0",
     "crypto": "^1.0.1",

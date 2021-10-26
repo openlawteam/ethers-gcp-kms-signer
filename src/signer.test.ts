@@ -1,8 +1,17 @@
 import configs from "dotenv";
 import { ethers } from "ethers";
-import { GcpKmsSigner } from "./signer";
+import { GcpKmsSigner, TypedDataVersion } from "./signer";
 
 configs.config();
+
+type CouponType = "coupon";
+
+type CouponData = {
+  type: CouponType;
+  authorizedMember: string;
+  amount: string;
+  nonce: string;
+};
 
 const kmsCredentials = {
   projectId: process.env.KMS_PROJECT_ID,
@@ -12,8 +21,8 @@ const kmsCredentials = {
   keyVersion: process.env.KMS_KEY_VERSION,
 };
 
-describe.skip("sign with Google KMS", () => {
-  test("should send a signed transaction using KMS signer", async () => {
+describe("Google KMS Signer", () => {
+  test("should send a signed transaction", async () => {
     const provider = ethers.providers.InfuraProvider.getWebSocketProvider("rinkeby", process.env.INFURA_KEY);
 
     const signer = new GcpKmsSigner(kmsCredentials).connect(provider);
@@ -27,5 +36,55 @@ describe.skip("sign with Google KMS", () => {
 
     /* eslint-disable no-console */
     console.log(tx);
+  });
+
+  test("should sign a message with typed data v4", async () => {
+    const signer = new GcpKmsSigner(kmsCredentials);
+    const memberAddress = "0xa9f01aaD34F2aF948F55612d06E51ae46ee08Bd4";
+
+    const couponData: CouponData = {
+      type: "coupon" as CouponType,
+      authorizedMember: memberAddress,
+      amount: "100",
+      nonce: "1",
+    };
+
+    const domain = {
+      name: "Snapshot Message",
+      version: "4",
+      chainId: 1,
+      verifyingContract: "0x0000000000000000000000000000000000000000",
+      actionId: "0x2",
+    };
+
+    const types = {
+      Message: [
+        { name: "authorizedMember", type: "address" },
+        { name: "amount", type: "uint256" },
+        { name: "nonce", type: "uint256" },
+      ],
+      EIP712Domain: [
+        { name: "name", type: "string" },
+        { name: "version", type: "string" },
+        { name: "chainId", type: "uint256" },
+        { name: "verifyingContract", type: "address" },
+        { name: "actionId", type: "address" },
+      ],
+    };
+
+    const signature = await signer.signTypedData({
+      data: {
+        types,
+        primaryType: "Message",
+        domain,
+        message: couponData,
+      },
+      version: TypedDataVersion.V4,
+    });
+
+    expect(signature).not.toBeNull();
+
+    /* eslint-disable no-console */
+    console.log(signature);
   });
 });
