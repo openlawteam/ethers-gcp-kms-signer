@@ -12,9 +12,7 @@
             "node": {
                 "extensions": [
                     ".js",
-                    ".jsx",
-                    ".ts",
-                    ".tsx"
+                    ".ts"
                 ]
             }
         }
@@ -22,8 +20,7 @@
     "overrides": [
         {
             "files": [
-                "**/*.ts",
-                "**/*.tsx"
+                "**/*.ts"
             ],
             "parser": "@typescript-eslint/parser",
             "parserOptions": {
@@ -36,7 +33,7 @@
                 "no-undef": "off",
                 "no-unused-vars": "off",
                 "no-restricted-globals": "off"
-            }
+            },
         }
     ],
     "rules": {

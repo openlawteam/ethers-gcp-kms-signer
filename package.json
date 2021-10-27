@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "An Ethers.js compatible signer that connects to GCP KMS",
   "main": "dist/signer.js",
-  "types": "dist/signer.d.ts",
+  "types": "dist/**/*.d.ts",
   "scripts": {
     "type-check": "tsc --noEmit",
     "test": "jest",
@@ -12,7 +12,7 @@
     "lint:fix": "npm run lint -- --fix",
     "clean": "rimraf dist",
     "prebuild": "npm run clean",
-    "build": "tsc --emitDeclarationOnly && babel src -d dist --ignore **/*.spec.ts,**/*.test.ts -x .js,.ts",
+    "build": "tsc -p tsconfig.build.json --emitDeclarationOnly && babel src -d dist --ignore **/*.test.d.ts,**/*.test.ts -x .ts",
     "preversion": "npm run lint && npm test && npm run build",
     "semantic-release": "semantic-release",
     "commit": "git-cz",
@@ -44,6 +44,7 @@
     "bn.js": "^5.2.0",
     "crypto": "^1.0.1",
     "dotenv": "^10.0.0",
+    "ethereumjs-util": "^7.1.3",
     "ethers": "^5.5.1",
     "key-encoder": "^2.0.3"
   },

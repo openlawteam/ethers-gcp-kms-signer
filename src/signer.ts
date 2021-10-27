@@ -8,6 +8,7 @@ import {
   TypedDataUtils,
 } from "@metamask/eth-sig-util";
 import { ethers, UnsignedTransaction } from "ethers";
+import { bufferToHex } from "ethereumjs-util";
 import { getPublicKey, getEthereumAddress, requestKmsSignature, determineCorrectV } from "./util/gcp-kms-utils";
 import { validateVersion } from "./util/signature-utils";
 
@@ -93,15 +94,16 @@ export class GcpKmsSigner extends ethers.Signer {
       throw new Error("Missing data parameter");
     }
 
-    const messageHash =
-      version === SignTypedDataVersion.V1
-        ? typedSignatureHash(data as TypedDataV1)
-        : TypedDataUtils.eip712Hash(
-            data as TypedMessage<T>,
-            version as SignTypedDataVersion.V3 | SignTypedDataVersion.V4
-          );
-    const messageSignature = this._signDigest(ethers.utils.keccak256(messageHash));
-    // return concatSig(toBuffer(sig.v), sig.r, sig.s);
+    let messageSignature: Promise<string>;
+    if (version === SignTypedDataVersion.V1) {
+      messageSignature = this._signDigest(typedSignatureHash(data as TypedDataV1));
+    } else {
+      const eip712Hash: Buffer = TypedDataUtils.eip712Hash(
+        data as TypedMessage<T>,
+        version as SignTypedDataVersion.V3 | SignTypedDataVersion.V4
+      );
+      messageSignature = this._signDigest(bufferToHex(eip712Hash));
+    }
     return messageSignature;
   }
 
@@ -111,10 +113,6 @@ export class GcpKmsSigner extends ethers.Signer {
     const transactionSignature = await this._signDigest(ethers.utils.keccak256(serializedTx));
     return ethers.utils.serializeTransaction(<UnsignedTransaction>unsignedTx, transactionSignature);
   }
-
-  // Return address of a signer that did signTypedData.
-  // Expects the same data that were used for signing. sig is a prefixed signature.
-  // TODO recoverTypedSignature ({data, sig})
 
   connect(provider: ethers.providers.Provider): GcpKmsSigner {
     return new GcpKmsSigner(this.kmsCredentials, provider);
