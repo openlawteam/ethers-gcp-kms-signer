@@ -3,15 +3,16 @@
   "version": "1.0.0",
   "description": "An Ethers.js compatible signer that connects to GCP KMS",
   "main": "dist/signer.js",
+  "types": "dist/signer.d.ts",
   "scripts": {
     "type-check": "tsc --noEmit",
     "test": "jest",
     "coverage": "npm test -- --coverage",
-    "lint": "eslint . --ext js,ts,tsx",
+    "lint": "eslint . --ext js,ts",
     "lint:fix": "npm run lint -- --fix",
     "clean": "rimraf dist",
     "prebuild": "npm run clean",
-    "build": "tsc --emitDeclarationOnly && babel src -d dist --ignore src/**/*.spec.ts,src/**/*.test.ts -x .js,.ts,.tsx",
+    "build": "tsc --emitDeclarationOnly && babel src -d dist --ignore **/*.spec.ts,**/*.test.ts -x .js,.ts",
     "preversion": "npm run lint && npm test && npm run build",
     "semantic-release": "semantic-release",
     "commit": "git-cz",
@@ -35,7 +36,6 @@
       "git add"
     ]
   },
-  "types": "dist/ts/src/index.d.ts",
   "homepage": "https://github.com/openlawteam/ethers-gcp-kms-signer#readme",
   "dependencies": {
     "@google-cloud/kms": "^2.10.0",
@@ -45,7 +45,6 @@
     "crypto": "^1.0.1",
     "dotenv": "^10.0.0",
     "ethers": "^5.5.1",
-    "ethers-gcp-kms-signer": "file:ethers-gcp-kms-signer-1.0.0.tgz",
     "key-encoder": "^2.0.3"
   },
   "devDependencies": {
