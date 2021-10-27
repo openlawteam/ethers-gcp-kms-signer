@@ -2,7 +2,7 @@
   "name": "ethers-gcp-kms-signer",
   "version": "1.0.0",
   "description": "An Ethers.js compatible signer that connects to GCP KMS",
-  "main": "dist/signer.ts",
+  "main": "dist/signer.js",
   "scripts": {
     "type-check": "tsc --noEmit",
     "test": "jest",
@@ -45,6 +45,7 @@
     "crypto": "^1.0.1",
     "dotenv": "^10.0.0",
     "ethers": "^5.5.1",
+    "ethers-gcp-kms-signer": "file:ethers-gcp-kms-signer-1.0.0.tgz",
     "key-encoder": "^2.0.3"
   },
   "devDependencies": {

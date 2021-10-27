@@ -112,6 +112,10 @@ export class GcpKmsSigner extends ethers.Signer {
     return ethers.utils.serializeTransaction(<UnsignedTransaction>unsignedTx, transactionSignature);
   }
 
+  // Return address of a signer that did signTypedData.
+  // Expects the same data that were used for signing. sig is a prefixed signature.
+  // TODO recoverTypedSignature ({data, sig})
+
   connect(provider: ethers.providers.Provider): GcpKmsSigner {
     return new GcpKmsSigner(this.kmsCredentials, provider);
   }
