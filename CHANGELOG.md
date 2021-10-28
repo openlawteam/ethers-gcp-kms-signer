@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/openlawteam/ethers-gcp-kms-signer/compare/v1.0.0...v1.1.0) (2021-10-28)
+
+
+### feat
+
+* sign typed data with gcp kms ([#2](https://github.com/openlawteam/ethers-gcp-kms-signer/issues/2)) ([a77b11f](https://github.com/openlawteam/ethers-gcp-kms-signer/commit/a77b11f85621d12b087977c27302dadf27ed9b39))
+
 # 1.0.0 (2021-10-25)
 
 
