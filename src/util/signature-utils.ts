@@ -6,8 +6,19 @@ import {
   typedSignatureHash,
   TypedDataUtils,
 } from "@metamask/eth-sig-util";
-import { recoverPublicKey } from "@metamask/eth-sig-util/dist/utils";
-import { bufferToHex, publicToAddress } from "ethereumjs-util";
+import { bufferToHex, publicToAddress, fromRpcSig, ecrecover } from "ethereumjs-util";
+
+/**
+ * Recover the public key from the given signature and message hash.
+ *
+ * @param messageHash - The hash of the signed message.
+ * @param signature - The signature.
+ * @returns The public key of the signer.
+ */
+export function recoverPublicKey(messageHash, signature) {
+  const sigParams = fromRpcSig(signature);
+  return ecrecover(messageHash, sigParams.v, sigParams.r, sigParams.s);
+}
 
 /**
  * Validate that the given value is a valid version string.
