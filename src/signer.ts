@@ -7,6 +7,7 @@ import {
   typedSignatureHash,
   TypedDataUtils,
 } from "@metamask/eth-sig-util";
+
 import { ethers, UnsignedTransaction } from "ethers";
 import { bufferToHex } from "ethereumjs-util";
 import { getPublicKey, getEthereumAddress, requestKmsSignature, determineCorrectV } from "./util/gcp-kms-utils";

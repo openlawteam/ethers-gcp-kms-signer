@@ -1,6 +1,7 @@
 import configs from "dotenv";
 import { ethers } from "ethers";
 import { GcpKmsSigner, TypedDataVersion } from "./signer";
+import { recoverTypedSignature } from "./util/signature-utils";
 
 configs.config();
 
@@ -21,7 +22,7 @@ const kmsCredentials = {
   keyVersion: process.env.KMS_KEY_VERSION,
 };
 
-describe("Google KMS Signer", () => {
+describe.skip("Google KMS Signer", () => {
   test("should send a signed transaction", async () => {
     const provider = ethers.providers.InfuraProvider.getWebSocketProvider("rinkeby", process.env.INFURA_KEY);
 
@@ -40,6 +41,7 @@ describe("Google KMS Signer", () => {
 
   test("should sign a message with typed data v4", async () => {
     const signer = new GcpKmsSigner(kmsCredentials);
+    const signerEthAddress = await signer.getAddress();
     const memberAddress = "0xa9f01aaD34F2aF948F55612d06E51ae46ee08Bd4";
 
     const couponData: CouponData = {
@@ -82,9 +84,25 @@ describe("Google KMS Signer", () => {
       version: TypedDataVersion.V4,
     });
 
+    /* eslint-disable no-console */
+    console.log(`Signature: ${signature}`);
+
     expect(signature).not.toBeNull();
 
+    const recoveredAddress = recoverTypedSignature({
+      data: {
+        types,
+        primaryType: "Message",
+        domain,
+        message: couponData,
+      },
+      signature,
+      version: TypedDataVersion.V4,
+    });
+
     /* eslint-disable no-console */
-    console.log(signature);
+    console.log(`Signer Address: ${signerEthAddress}`);
+    console.log(`Recovered Address: ${recoveredAddress}`);
+    expect(recoveredAddress).toEqual(signerEthAddress);
   });
 });
