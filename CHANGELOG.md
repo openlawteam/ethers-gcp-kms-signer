@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/openlawteam/ethers-gcp-kms-signer/compare/v1.1.0...v1.1.1) (2021-10-28)
+
+
+### fix
+
+* recoverPubKey function ([20af9ba](https://github.com/openlawteam/ethers-gcp-kms-signer/commit/20af9ba81d25c1f61bd902d3e23e5f416ae345e9))
+
 # [1.1.0](https://github.com/openlawteam/ethers-gcp-kms-signer/compare/v1.0.0...v1.1.0) (2021-10-28)
 
 
