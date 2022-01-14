@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/openlawteam/ethers-gcp-kms-signer/compare/v1.1.1...v1.1.2) (2022-01-14)
+
+
+### fix
+
+* build issue [#3](https://github.com/openlawteam/ethers-gcp-kms-signer/issues/3) ([#4](https://github.com/openlawteam/ethers-gcp-kms-signer/issues/4)) ([4b7fb51](https://github.com/openlawteam/ethers-gcp-kms-signer/commit/4b7fb51dcf0d68a52cb525bc2b3a96bcab95ca2c))
+
 ## [1.1.1](https://github.com/openlawteam/ethers-gcp-kms-signer/compare/v1.1.0...v1.1.1) (2021-10-28)
 
 
