@@ -1,3 +1,18 @@
+## [1.1.3](https://github.com/openlawteam/ethers-gcp-kms-signer/compare/v1.1.2...v1.1.3) (2022-10-31)
+
+
+### chore
+
+* bump google kms lib version ([84ea5db](https://github.com/openlawteam/ethers-gcp-kms-signer/commit/84ea5dbcf1751cd59d4095ae836257379dd52352))
+* lock ethers lib version ([31c499b](https://github.com/openlawteam/ethers-gcp-kms-signer/commit/31c499b9f317fbd6be055f540a08e2d25cb50abe))
+* lock lib version ([26fe9e5](https://github.com/openlawteam/ethers-gcp-kms-signer/commit/26fe9e5b61a516a389b7e72639b7e34524561755))
+
+
+### fix
+
+* deployment action ([492b400](https://github.com/openlawteam/ethers-gcp-kms-signer/commit/492b40084844ab82aadde3784a96ee29af8ad995))
+* github workflows dir ([8371d5a](https://github.com/openlawteam/ethers-gcp-kms-signer/commit/8371d5a1eb8cc1ee0927f7fab2bf6bf79bed7820))
+
 ## [1.1.2](https://github.com/openlawteam/ethers-gcp-kms-signer/compare/v1.1.1...v1.1.2) (2022-01-14)
 
 
