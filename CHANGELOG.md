@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/openlawteam/ethers-gcp-kms-signer/compare/v1.1.3...v1.1.4) (2022-10-31)
+
+
+### fix
+
+* gh release workflow ([14acd9a](https://github.com/openlawteam/ethers-gcp-kms-signer/commit/14acd9a3ebd47e29f3d4d0e6062902f88c984ed2))
+
 ## [1.1.3](https://github.com/openlawteam/ethers-gcp-kms-signer/compare/v1.1.2...v1.1.3) (2022-10-31)
 
 
