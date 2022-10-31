@@ -12,16 +12,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 18
       - name: Install dependencies
-        run: npm ci
-      - name: Release
+        run: npm install
+      - name: Execute Linter
+        run: npm run lint
+      - name: Execute Build Script
+        run: npm run build
+      - name: Test
+        run: npm run test
+      - name: New Release
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
+          GITHUB_TOKEN: ${{ secrets.PAT_OLBOT_PUB_REPOS_RW }}
+          NPM_TOKEN: ${{ secrets.NPM_TRIBUTELABS_PUBLISH_KEY }}
+        run: npm run semantic-release
