@@ -38,15 +38,15 @@
   },
   "homepage": "https://github.com/openlawteam/ethers-gcp-kms-signer#readme",
   "dependencies": {
-    "@google-cloud/kms": "^2.10.0",
-    "@metamask/eth-sig-util": "^4.0.0",
-    "asn1.js": "^5.4.1",
-    "bn.js": "^5.2.0",
-    "crypto": "^1.0.1",
+    "@google-cloud/kms": "3.0.1",
+    "@metamask/eth-sig-util": "4.0.0",
+    "asn1.js": "5.4.1",
+    "bn.js": "5.2.0",
+    "crypto": "1.0.1",
     "dotenv": "^10.0.0",
     "ethereumjs-util": "^7.1.3",
     "ethers": "^5.5.1",
-    "key-encoder": "^2.0.3"
+    "key-encoder": "2.0.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",

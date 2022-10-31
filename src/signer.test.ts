@@ -22,9 +22,9 @@ const kmsCredentials = {
   keyVersion: process.env.KMS_KEY_VERSION,
 };
 
-describe.skip("Google KMS Signer", () => {
-  test("should send a signed transaction", async () => {
-    const provider = ethers.providers.InfuraProvider.getWebSocketProvider("rinkeby", process.env.INFURA_KEY);
+describe.skip("sign with Google KMS", () => {
+  test("should send a signed transaction using KMS signer", async () => {
+    const provider = ethers.providers.InfuraProvider.getWebSocketProvider("goerli", process.env.INFURA_KEY);
 
     const signer = new GcpKmsSigner(kmsCredentials).connect(provider);
 
