@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/openlawteam/ethers-gcp-kms-signer/compare/v1.1.4...v1.1.5) (2022-11-15)
+
+
+### fix
+
+* read gcreds from env var ([7fcc05d](https://github.com/openlawteam/ethers-gcp-kms-signer/commit/7fcc05d79e4d06bda0920dcc785e0560cd7d2835))
+
 ## [1.1.4](https://github.com/openlawteam/ethers-gcp-kms-signer/compare/v1.1.3...v1.1.4) (2022-10-31)
 
 
