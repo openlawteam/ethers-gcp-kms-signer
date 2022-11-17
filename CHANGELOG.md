@@ -1,3 +1,10 @@
+## [1.1.6](https://github.com/openlawteam/ethers-gcp-kms-signer/compare/v1.1.5...v1.1.6) (2022-11-17)
+
+
+### fix
+
+* parse line break for gcp env var ([721accf](https://github.com/openlawteam/ethers-gcp-kms-signer/commit/721accf412fdcb271f1e4e559820a6e0071e52d6))
+
 ## [1.1.5](https://github.com/openlawteam/ethers-gcp-kms-signer/compare/v1.1.4...v1.1.5) (2022-11-15)
 
 
