@@ -26,7 +26,7 @@ function getClientCredentials() {
     ? {
         credentials: {
           client_email: process.env.GOOGLE_APPLICATION_CREDENTIAL_EMAIL,
-          private_key: process.env.GOOGLE_APPLICATION_CREDENTIAL_PRIVATE_KEY,
+          private_key: process.env.GOOGLE_APPLICATION_CREDENTIAL_PRIVATE_KEY.replace(/\\n/gm, "\n"),
         },
       }
     : {};
