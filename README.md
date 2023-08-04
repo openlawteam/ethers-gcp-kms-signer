@@ -8,7 +8,7 @@ This is a wallet or signer that can be used together with [Ethers.js](https://gi
 npm i ethers-gcp-kms-signer
 ```
 
-1. Create your asymmetric key as follows: https://cloud.google.com/kms/docs/creating-asymmetric-keys
+1. Create your asymmetric key as follows: https://cloud.google.com/kms/docs/creating-asymmetric-keys with  `EC_SIGN_SECP256K1_SHA256` algorithm.
 
 2. Add the new service account to GCP with the correct KMS roles: Crypto KMS `Signer`, `Verifier`, `Viewer`
 
